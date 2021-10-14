@@ -1,4 +1,4 @@
-package com.example.todaysmannanative.ui.mccheyne
+package com.example.todaysmannanative.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

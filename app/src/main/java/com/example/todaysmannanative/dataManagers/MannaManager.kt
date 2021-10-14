@@ -1,20 +1,24 @@
 package com.example.todaysmannanative.dataManagers
 
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.example.todaysmannanative.MainApplication
 import com.example.todaysmannanative.models.MannaItem
 import com.example.todaysmannanative.toast
+import com.example.todaysmannanative.viewmodels.HomeViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.Exception
+import java.io.Serializable
 
 class MannaManager {
     companion object {
 
-        var mannaItem: MannaItem = MannaItem()
+        var mannaItem = MannaItem()
 
         fun getData() {
             val retrofit = Retrofit.Builder()
@@ -34,21 +38,23 @@ class MannaManager {
 
                 override fun onResponse(call: Call<MannaItem>, response: Response<MannaItem>) {
                     response.body()?.let {
-                        val verse = it.verse
-                        val contents = it.contents
+                        val intent = Intent("mannaData")
 
-                        mannaItem = MannaItem(verse, contents)
+                        mannaItem = it
 
-                        toast("verse: $verse\ncontents: $contents\n", Toast.LENGTH_LONG)
+                        intent.putExtra("item", it)
+
+                        LocalBroadcastManager.getInstance(MainApplication.applicationContext()).sendBroadcast(intent)
+
+                        try {
+                            Log.d(
+                                "Manna",
+                                "verse: ${it.verse}\ncontents: ${it.contents}\n"
+                            )
+                        } catch (ex: Exception) {
+                            Log.d("Exception occurred!", ex.message.toString())
+                        }
                     } ?: toast("api 구조 에러", Toast.LENGTH_SHORT)
-                    try {
-                        Log.d(
-                            "Manna",
-                            "verse: ${MannaManager.mannaItem.verse}\ncontents: ${MannaManager.mannaItem.contents}\n"
-                        )
-                    } catch (ex: Exception) {
-                        Log.d("Exception occurred!", ex.message.toString())
-                    }
                 }
             })
         }

@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_mccheyne"
         android:name="com.example.todaysmannanative.ui.mccheyne.MccheyneFragment"
         android:label="@string/title_mccheyne"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_mccheyne" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_memo"
         android:name="com.example.todaysmannanative.ui.memo.MemoFragment"
         android:label="@string/title_memo"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_memo" />
 </navigation>
