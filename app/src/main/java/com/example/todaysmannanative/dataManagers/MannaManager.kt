@@ -7,13 +7,11 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.todaysmannanative.MainApplication
 import com.example.todaysmannanative.models.MannaItem
 import com.example.todaysmannanative.toast
-import com.example.todaysmannanative.viewmodels.HomeViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.Serializable
 
 class MannaManager {
     companion object {
