@@ -30,6 +30,6 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setupWithNavController(findNavController(R.id.nav_host_fragment_activity_main))
 
         MannaManager.getData()
-        val mccheynePlan = MccheyneManager.parseMccheyneFromJson()
+        MccheyneManager.parseMccheyneFromJson()
     }
 }
